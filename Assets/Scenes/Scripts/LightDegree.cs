@@ -5,29 +5,31 @@ using UnityEngine;
 public class LightDegree : MonoBehaviour
 {
     public Light myLight;
+    public bool m_IsButtonDowning;
     // Start is called before the first frame update
     void Start()
     {
-        myLight.intensity = 0.5f;
+   
     }
 
     // Update is called once per frame
     void Update()
     {
-        myLight.intensity -= 0.001f;
+ 
 
-        // 밝기가 0 이하로 되지 않도록 제한
-        if (myLight.intensity <= 0f)
+        if (m_IsButtonDowning)
         {
-            myLight.intensity = 0f;
+            myLight.intensity += 0.001f;
         }
     }
-    void LightUp()
+
+    public void LightUp()
     {
-        myLight.intensity += 0.001f;
+        m_IsButtonDowning = true;
     }
-    void LightDown()
+    public void noDown()
     {
-        myLight.intensity -= 0.001f;
+        m_IsButtonDowning = false;
     }
+
 }
